@@ -1,0 +1,76 @@
+﻿
+
+/*#region Basic setting for size */
+
+body {
+    margin-top: 60px;
+}
+
+.container-fluid {
+    margin: 15px;
+}
+
+.ellipsis-overflow
+{
+    padding:0px;
+}
+.ellipsis-overflow *
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.span-text {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    background: #ddd;
+    color: blue;
+}
+
+/*#endregion */
+
+
+/*#region Taken from HotTopic.com */
+
+* {
+    font-family: 'Roboto', sans-serif;
+    border-radius:0px !important;
+}
+
+.primary-logo {
+    margin: 10px auto;
+    position: relative;
+    width: 170px;
+    z-index: 40;
+}
+
+.input-setting {
+    border-radius: 0px;
+}
+
+
+.label-setting {
+    font-weight: 100;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    text-align: left !important;
+    padding: 7.5px 0px;
+    margin-bottom:0px;
+}
+
+.redBtn {
+    width: auto;
+    color: #fff !important;
+    background: #ee1c25 !important;
+    border-radius: 0;
+    /* padding: 5px 60px; */
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+    .redBtn {
+        width: 100%;
+    }
+}
+/*#endregion */
