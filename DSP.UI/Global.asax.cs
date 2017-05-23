@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace DSP.UI
 {
@@ -13,6 +14,20 @@ namespace DSP.UI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Request.IsAuthenticated)
+            {
+
+                //old authentication, kill it
+                FormsAuthentication.SignOut();
+                //or use Response.Redirect to go to a different page
+                FormsAuthentication.RedirectToLoginPage("Session=Expired");
+                HttpContext.Current.Response.End();
+            }
+
         }
     }
 }

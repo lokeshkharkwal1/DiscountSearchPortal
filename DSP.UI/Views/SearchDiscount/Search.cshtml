@@ -16,7 +16,7 @@
             </div>
 
             <div class="panel-body">
-                @using(Html.BeginForm("Login","SearchDiscount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using(Html.BeginForm("Search","SearchDiscount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-group">

@@ -8,6 +8,8 @@ using System.Web.Security;
 
 namespace DSP.UI.Controllers
 {
+
+    
     public class SearchDiscountController : Controller
     {
         // GET: SearchDiscount
@@ -19,21 +21,33 @@ namespace DSP.UI.Controllers
             }
             return View();
         }
-
-        [HttpPostAttribute]
-        [ValidateAntiForgeryToken]
+        
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]        
         public ActionResult Login(LoginViewModel loginModel)
         {
             #region validation code goes here. 
             //todo
             #endregion
+            
             FormsAuthentication.SetAuthCookie(loginModel.UserId, false);
             return RedirectToAction("Search");
         }
 
+        
+        [HttpGet]
         [Authorize]
         public ActionResult Search()
         {                      
+            return View();
+        }
+        
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(SearchViewModel view)
+        {
             return View();
         }
     }
