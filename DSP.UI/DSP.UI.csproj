@@ -97,8 +97,10 @@
     <Content Include="Views\SearchDiscount\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\DspVariableResolve.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SearchDiscountController.cs" />
+    <Content Include="dsp_variable.config" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -26,7 +26,7 @@
                         <div class="col-sm-10 col-sm-offset-2">
                             <div class="row">
                                 <div class="col-xs-8">
-                                    @Html.TextBoxFor(model => model.AssociateNumber, new { placeholder = "Associate Number", @class = "form-control input-setting", required = "required", autocomplete = "off" })
+                                    @Html.TextBoxFor(model => model.AssociateNumber, new { placeholder = "Associate Number", @class = "form-control input-setting", required = "required", autocomplete = "off", onkeypress="validate(event)" })
                                     @Html.ValidationMessageFor(model => model.AssociateNumber, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-xs-4 ellipsis-overflow">
@@ -104,3 +104,25 @@
         </div>
     </div>
 </div>
+
+
+@section scripts
+{
+    <script>
+        setTimeout(function () {
+            window.location = "/";
+        }, (1000 * 60 * @Session.Timeout) + 10);
+
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode( key );
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+
+    </script>
+}
