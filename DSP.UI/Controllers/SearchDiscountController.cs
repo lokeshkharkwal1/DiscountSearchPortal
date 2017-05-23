@@ -1,6 +1,8 @@
 ﻿using DSP.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,24 +17,49 @@ namespace DSP.UI.Controllers
         // GET: SearchDiscount
         public ActionResult Index()
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Search");
             }
-            return View();
+            return RedirectToAction("Login");
         }
         
+
+        public ActionResult Login()
+        {
+            return View();
+        }
         
         [HttpPost]
         [ValidateAntiForgeryToken]        
         public ActionResult Login(LoginViewModel loginModel)
         {
-            #region validation code goes here. 
-            //todo
-            #endregion
-            
-            FormsAuthentication.SetAuthCookie(loginModel.UserId, false);
-            return RedirectToAction("Search");
+            if (ModelState.IsValid)
+            {
+                #region validation code goes here.
+                //todo
+
+                var userCount = "No User";
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["test"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("select count(*) from UserProfile", con);
+
+                    con.Open();
+                    var count = cmd.ExecuteScalar();
+
+                    userCount = count.ToString();
+                    con.Close();
+                }
+
+                #endregion
+                
+                FormsAuthentication.SetAuthCookie(loginModel.UserId, false);
+                return RedirectToAction("Search");
+            }
+            else
+            {
+                return View(loginModel);
+            }
         }
 
         

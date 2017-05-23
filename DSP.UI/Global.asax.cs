@@ -14,6 +14,8 @@ namespace DSP.UI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ApplicationVariable.LoadAll();
         }
 
         void Session_Start(object sender, EventArgs e)
@@ -24,7 +26,7 @@ namespace DSP.UI
                 //old authentication, kill it
                 FormsAuthentication.SignOut();
                 //or use Response.Redirect to go to a different page
-                FormsAuthentication.RedirectToLoginPage("Session=Expired");
+                FormsAuthentication.RedirectToLoginPage();
                 HttpContext.Current.Response.End();
             }
 
