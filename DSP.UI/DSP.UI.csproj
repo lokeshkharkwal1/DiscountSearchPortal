@@ -97,6 +97,8 @@
     <Content Include="Views\SearchDiscount\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\DSPRangeAttribute.cs" />
+    <Compile Include="App_Code\ApplicationVariable.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SearchDiscountController.cs" />
     <Compile Include="Global.asax.cs">
@@ -111,7 +113,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\SearchDiscount\Index.cshtml" />
+    <Content Include="Views\SearchDiscount\Login.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
