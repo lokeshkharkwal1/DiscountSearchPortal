@@ -21,28 +21,29 @@ namespace DSP.UI.App_Code
             get { return (SearchPage)this["searchPage"]; }
 
         }
+
     }
 
     public class Range : ConfigurationElement
     {
         [ConfigurationProperty("minValue")]
-        public CustomeElement<string> MinValue
+        public int MinValue
         {
-            get { return (CustomeElement<string>)this["minValue"]; }
+            get { return (int)this["minValue"]; }
             set { this["minValue"] = value; }
         }
 
         [ConfigurationProperty("maxValue")]
-        public CustomeElement<string> MaxValue
+        public int MaxValue
         {
-            get { return (CustomeElement<string>)this["maxValue"]; }
+            get { return (int)this["maxValue"]; }
             set { this["maxValue"] = value; }
         }
 
         [ConfigurationProperty("errorMessage")]
-        public CustomeElement<string> ErrorMessage
+        public string ErrorMessage
         {
-            get { return (CustomeElement<string>)this["errorMessage"]; }
+            get { return (string)this["errorMessage"]; }
             set { this["errorMessage"] = value; }
         }
     }
@@ -56,18 +57,18 @@ namespace DSP.UI.App_Code
             set { this["loginPageHeading"] = value; }
         }
 
-        [ConfigurationProperty("loginLabel")]
-        public CustomeElement<string> LoginLabel
+        [ConfigurationProperty("loginFieldLabel")]
+        public CustomeElement<string> LoginFieldLabel
         {
-            get { return (CustomeElement<string>)this["loginLabel"]; }
-            set { this["loginLabel"] = value; }
+            get { return (CustomeElement<string>)this["loginFieldLabel"]; }
+            set { this["loginFieldLabel"] = value; }
         }
 
-        [ConfigurationProperty("loginPlaceholder")]
-        public CustomeElement<string> LoginPlaceholder
+        [ConfigurationProperty("loginFieldPlaceholder")]
+        public CustomeElement<string> LoginFieldPlaceholder
         {
-            get { return (CustomeElement<string>)this["loginPlaceholder"]; }
-            set { this["loginPlaceholder"] = value; }
+            get { return (CustomeElement<string>)this["loginFieldPlaceholder"]; }
+            set { this["loginFieldPlaceholder"] = value; }
         }
 
         [ConfigurationProperty("loginButtonValue")]
@@ -77,25 +78,18 @@ namespace DSP.UI.App_Code
             set { this["loginButtonValue"] = value; }
         }
 
-        [ConfigurationProperty("invalidLogin")]
-        public CustomeElement<string> InvalidLogin
+        [ConfigurationProperty("errorMessageIfUserNotFound")]
+        public CustomeElement<string> ErrorMessageIfUserNotFound
         {
-            get { return (CustomeElement<string>)this["invalidLogin"]; }
-            set { this["invalidLogin"] = value; }
+            get { return (CustomeElement<string>)this["errorMessageIfUserNotFound"]; }
+            set { this["errorMessageIfUserNotFound"] = value; }
         }
 
-        [ConfigurationProperty("inactiveUser")]
-        public CustomeElement<string> InactiveUser
+        [ConfigurationProperty("errorMessageIfUserNotActive")]
+        public CustomeElement<string> ErrorMessageIfUserNotActive
         {
-            get { return (CustomeElement<string>)this["inactiveUser"]; }
-            set { this["inactiveUser"] = value; }
-        }
-
-        [ConfigurationProperty("loginPattern")]
-        public CustomeElement<int> LoginPattern
-        {
-            get { return (CustomeElement<int>)this["loginPattern"]; }
-            set { this["loginPattern"] = value; }
+            get { return (CustomeElement<string>)this["errorMessageIfUserNotActive"]; }
+            set { this["errorMessageIfUserNotActive"] = value; }
         }
 
         [ConfigurationProperty("range")]
@@ -116,18 +110,18 @@ namespace DSP.UI.App_Code
             set { this["searchPageHeading"] = value; }
         }
 
-        [ConfigurationProperty("searchLabel")]
-        public CustomeElement<string> SearchLabel
+        [ConfigurationProperty("searchFieldLabel")]
+        public CustomeElement<string> SearchFieldLabel
         {
-            get { return (CustomeElement<string>)this["searchLabel"]; }
-            set { this["searchLabel"] = value; }
+            get { return (CustomeElement<string>)this["searchFieldLabel"]; }
+            set { this["searchFieldLabel"] = value; }
         }
 
-        [ConfigurationProperty("searchPlaceholder")]
-        public CustomeElement<string> SearchPlaceholder
+        [ConfigurationProperty("searchFieldPlaceholder")]
+        public CustomeElement<string> SearchFieldPlaceholder
         {
-            get { return (CustomeElement<string>)this["searchPlaceholder"]; }
-            set { this["searchPlaceholder"] = value; }
+            get { return (CustomeElement<string>)this["searchFieldPlaceholder"]; }
+            set { this["searchFieldPlaceholder"] = value; }
         }
 
         [ConfigurationProperty("searchButtonValue")]

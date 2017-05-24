@@ -1,4 +1,5 @@
-﻿using DSP.UI.Models;
+﻿using DSP.UI.App_Code;
+using DSP.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,9 +12,11 @@ using System.Web.Security;
 namespace DSP.UI.Controllers
 {
 
-    
+
     public class SearchDiscountController : Controller
     {
+
+
         // GET: SearchDiscount
         public ActionResult Index()
         {
@@ -23,15 +26,15 @@ namespace DSP.UI.Controllers
             }
             return RedirectToAction("Login");
         }
-        
+
 
         public ActionResult Login()
         {
             return View();
         }
-        
+
         [HttpPost]
-        [ValidateAntiForgeryToken]        
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel loginModel)
         {
             if (ModelState.IsValid)
@@ -52,7 +55,7 @@ namespace DSP.UI.Controllers
                 }
 
                 #endregion
-                
+
                 FormsAuthentication.SetAuthCookie(loginModel.UserId, false);
                 return RedirectToAction("Search");
             }
@@ -62,14 +65,14 @@ namespace DSP.UI.Controllers
             }
         }
 
-        
+
         [HttpGet]
         [Authorize]
         public ActionResult Search()
-        {                      
+        {
             return View();
         }
-        
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
