@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSP.DB", "DSP.DB\DSP.DB.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSP.UI", "DSP.UI\DSP.UI.csproj", "{17D8CAE5-B4B5-4E01-B8CC-32961C2DA933}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSP.ViewModel", "DSP.ViewModel\DSP.ViewModel.csproj", "{D47DA575-C400-4B3F-BA18-8956211F8A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSP.Helper", "DSP.Helper\DSP.Helper.csproj", "{94A5299B-55D3-404D-B6C1-3DEEBD2A3150}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{17D8CAE5-B4B5-4E01-B8CC-32961C2DA933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17D8CAE5-B4B5-4E01-B8CC-32961C2DA933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17D8CAE5-B4B5-4E01-B8CC-32961C2DA933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47DA575-C400-4B3F-BA18-8956211F8A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47DA575-C400-4B3F-BA18-8956211F8A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47DA575-C400-4B3F-BA18-8956211F8A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47DA575-C400-4B3F-BA18-8956211F8A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A5299B-55D3-404D-B6C1-3DEEBD2A3150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A5299B-55D3-404D-B6C1-3DEEBD2A3150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A5299B-55D3-404D-B6C1-3DEEBD2A3150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A5299B-55D3-404D-B6C1-3DEEBD2A3150}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
-﻿using DSP.UI.App_Code;
-using DSP.UI.Models;
+﻿using DSP.DB;
+using DSP.Helper;
+using DSP.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,10 +17,14 @@ namespace DSP.UI.Controllers
     public class SearchDiscountController : Controller
     {
 
-
+        QueryManager qMgr = null;
+        public SearchDiscountController()
+        {
+            qMgr = new QueryManager();
+        }
         // GET: SearchDiscount
         public ActionResult Index()
-        {
+        {            
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Search");
@@ -29,40 +34,37 @@ namespace DSP.UI.Controllers
 
 
         public ActionResult Login()
-        {
+        {            
+            
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel loginModel)
         {
             if (ModelState.IsValid)
-            {
-                #region validation code goes here.
-                //todo
-
-                var userCount = "No User";
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["test"].ConnectionString))
+            {                
+                LoginStatus rslt = qMgr.AllowedToLogin(loginModel);
+                var msg = string.Empty;
+                switch (rslt)
                 {
-                    SqlCommand cmd = new SqlCommand("select count(*) from UserProfile", con);
-
-                    con.Open();
-                    var count = cmd.ExecuteScalar();
-
-                    userCount = count.ToString();
-                    con.Close();
+                    case LoginStatus.NotFound:
+                        msg = ApplicationVariable.Config.LoginPage.ErrorMessageIfUserNotFound.Value;
+                        break;
+                    case LoginStatus.NotAllowed:
+                        msg = ApplicationVariable.Config.LoginPage.ErrorMessageIfUserNotAllowedToLogin.Value;
+                        break;
+                    case LoginStatus.Successful:
+                        FormsAuthentication.SetAuthCookie(loginModel.FirstName, false);
+                        return RedirectToAction("Search");
+                        break;                    
                 }
 
-                #endregion
-
-                FormsAuthentication.SetAuthCookie(loginModel.UserId, false);
-                return RedirectToAction("Search");
+                ModelState.AddModelError("EmpId", msg);                
             }
-            else
-            {
-                return View(loginModel);
-            }
+            return View(loginModel);            
         }
 
 
@@ -78,7 +80,15 @@ namespace DSP.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search(SearchViewModel view)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                SearchStatus rslt = qMgr.DiscountLookup(view);
+                if(rslt == SearchStatus.NotFound)
+                {
+                    ModelState.AddModelError("EmpId", ApplicationVariable.Config.SearchPage.NoResultFound.Value);                
+                }
+            }
+            return View(view);
         }
     }
 }

@@ -97,17 +97,12 @@
     <Content Include="Views\SearchDiscount\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\DspVariableResolve.cs" />
-    <Compile Include="App_Code\DSPRangeAttribute.cs" />
-    <Compile Include="App_Code\ApplicationVariable.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SearchDiscountController.cs" />
     <Content Include="dsp_variable.config" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +121,20 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DSP.DB\DSP.DB.csproj">
+      <Project>{4416821d-bf92-41c0-ab06-d279b2f061c8}</Project>
+      <Name>DSP.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSP.Helper\DSP.Helper.csproj">
+      <Project>{94a5299b-55d3-404d-b6c1-3deebd2a3150}</Project>
+      <Name>DSP.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSP.ViewModel\DSP.ViewModel.csproj">
+      <Project>{d47da575-c400-4b3f-ba18-8956211f8a86}</Project>
+      <Name>DSP.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

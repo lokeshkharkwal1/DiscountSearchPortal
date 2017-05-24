@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4416821D-BF92-41C0-AB06-D279B2F061C8}</ProjectGuid>
+    <ProjectGuid>{D47DA575-C400-4B3F-BA18-8956211F8A86}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DSP.DB</RootNamespace>
-    <AssemblyName>DSP.DB</AssemblyName>
+    <RootNamespace>DSP.ViewModel</RootNamespace>
+    <AssemblyName>DSP.ViewModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,19 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DSPConnection.cs" />
+    <Compile Include="LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryConst.cs" />
-    <Compile Include="QueryManager.cs" />
+    <Compile Include="SearchResult.cs" />
+    <Compile Include="SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DSP.Helper\DSP.Helper.csproj">
       <Project>{94a5299b-55d3-404d-b6c1-3deebd2a3150}</Project>
       <Name>DSP.Helper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DSP.ViewModel\DSP.ViewModel.csproj">
-      <Project>{d47da575-c400-4b3f-ba18-8956211f8a86}</Project>
-      <Name>DSP.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

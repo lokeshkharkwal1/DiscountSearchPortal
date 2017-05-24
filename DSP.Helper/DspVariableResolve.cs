@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
-namespace DSP.UI.App_Code
+namespace DSP.Helper
 {
     public class DspVariableResolve : ConfigurationSection
     {
@@ -92,11 +92,11 @@ namespace DSP.UI.App_Code
             set { this["errorMessageIfUserNotFound"] = value; }
         }
 
-        [ConfigurationProperty("errorMessageIfUserNotActive")]
-        public CustomeElement<string> ErrorMessageIfUserNotActive
+        [ConfigurationProperty("errorMessageIfUserNotAllowedToLogin")]
+        public CustomeElement<string> ErrorMessageIfUserNotAllowedToLogin
         {
-            get { return (CustomeElement<string>)this["errorMessageIfUserNotActive"]; }
-            set { this["errorMessageIfUserNotActive"] = value; }
+            get { return (CustomeElement<string>)this["errorMessageIfUserNotAllowedToLogin"]; }
+            set { this["errorMessageIfUserNotAllowedToLogin"] = value; }
         }
 
         [ConfigurationProperty("range")]
