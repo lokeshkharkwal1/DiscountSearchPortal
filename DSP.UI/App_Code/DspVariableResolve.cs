@@ -50,6 +50,13 @@ namespace DSP.UI.App_Code
 
     public class LoginPage : ConfigurationElement
     {
+        [ConfigurationProperty("jobCodesAllowedToLogin")]
+        public CustomeElement<string> JobCodesAllowedToLogin
+        {
+            get { return (CustomeElement<string>)this["jobCodesAllowedToLogin"]; }
+            set { this["jobCodesAllowedToLogin"] = value; }
+        }
+
         [ConfigurationProperty("loginPageHeading")]
         public CustomeElement<string> LoginPageHeading
         {
