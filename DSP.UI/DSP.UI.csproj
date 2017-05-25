@@ -85,7 +85,13 @@
     <Content Include="Content\site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\hottopic.png" />
+    <Content Include="Images\Logos\HT\logo.png" />
+    <Content Include="Images\Logos\BL\logo.png" />
+    <Content Include="Images\Logos\BL\banner.JPG" />
+    <Content Include="Images\Logos\HT\banner.jpg" />
+    <Content Include="Images\Logos\TD\banner.jpg" />
+    <Content Include="Images\Logos\HT\logo_New.png" />
+    <Content Include="Images\Logos\TD\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -135,6 +141,7 @@
       <Name>DSP.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
