@@ -10,15 +10,45 @@ body {
     margin: 15px;
 }
 
+.htheader {
+    background-color:black !important;
+    border:1px black solid !important;
+}
+
+.blheader{
+    background-color: #FBFBFB !important;
+    border:1px #FBFBFB solid !important;
+        
+}
+
+.tdheader{
+    background-color: #FBFBFB !important;
+    border:1px #FBFBFB solid !important;
+
+}
+
+.banner-setting {
+    width:100%;
+    height:100px;
+}
+
+
+
+
 .ellipsis-overflow
 {
-    padding:0px;
+    padding:0;
 }
 .ellipsis-overflow *
 {
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    white-space: nowrap; 
     overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.name-section{
+    padding: 7px 7px;
+    color: blue;
 }
 
 .span-text {
@@ -35,18 +65,18 @@ body {
 
 * {
     font-family: 'Roboto', sans-serif;
-    border-radius:0px !important;
+    border-radius:0 !important;
 }
 
 .primary-logo {
     margin: 10px auto;
     position: relative;
-    width: 170px;
+    /*width: 170px;*/
     z-index: 40;
 }
 
 .input-setting {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 
@@ -55,8 +85,8 @@ body {
     font-size: 12px !important;
     text-transform: uppercase;
     text-align: left !important;
-    padding: 7.5px 0px;
-    margin-bottom:0px;
+    padding: 7.5px 0;
+    margin-bottom:0;
 }
 
 .redBtn {
@@ -71,6 +101,10 @@ body {
 @media only screen and (max-width: 768px) {
     .redBtn {
         width: 100%;
+    }
+
+    .banner-setting{
+        height:60px;
     }
 }
 /*#endregion */

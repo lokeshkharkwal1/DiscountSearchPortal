@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DSP.DB
-{    
+{
     public class QueryManager
     {
         DSPConnection conFac;
@@ -18,14 +18,14 @@ namespace DSP.DB
         }
 
         public LoginStatus AllowedToLogin(LoginViewModel vm)
-        {            
+        {
             using (var con = conFac.GetConnection())
             {
                 using (var cmd = QueryConst.GetLoginCommand(con, vm.EmpId))
                 {
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
-                    if(!dr.HasRows)
+                    if (!dr.HasRows)
                     {
                         return LoginStatus.NotFound;
                     }
@@ -43,8 +43,8 @@ namespace DSP.DB
                     {
                         return LoginStatus.NotAllowed;
                     }
-                }                
-            }             
+                }
+            }
         }
 
         public SearchStatus DiscountLookup(SearchViewModel vm)
@@ -63,11 +63,14 @@ namespace DSP.DB
                     dr.Read();
                     vm.Result = new SearchResult
                     {
-                        PrefName= dr.GetFieldValue<string>(0).Trim(),
+                        PrefName = dr.GetFieldValue<string>(0).Trim(),
                         Location = dr.GetFieldValue<string>(1).Trim(),
-                        Discount = dr.GetFieldValue<bool>(2)
+                        Discount = dr.GetFieldValue<bool>(2),
+                        FirstName = dr.GetFieldValue<string>(3).Trim(),
+                        LastName = dr.GetFieldValue<string>(4).Trim()
+
                     };
-                    
+
                     if (vm.Result.Discount)
                     {
                         return SearchStatus.DiscountAllowed;
@@ -77,7 +80,7 @@ namespace DSP.DB
                         return SearchStatus.DiscountNotAllowed;
                     }
                 }
-            }      
+            }
         }
     }
 }

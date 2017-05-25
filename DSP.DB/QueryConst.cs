@@ -19,7 +19,9 @@ namespace DSP.DB
         private const string DiscountLookupQuery = @"SELECT
                                                         NamePreferred,
                                                         Dept_Desc,
-                                                        ActiveFlag
+                                                        ActiveFlag,
+                                                        NameLast,
+                                                        NameFirst
                                                     FROM vw_EmployeeDiscSearch
                                                     WHERE EmployeeId=@SearchId";
 

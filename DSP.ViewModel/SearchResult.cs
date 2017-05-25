@@ -11,5 +11,7 @@ namespace DSP.ViewModel
         public string PrefName { get; set; }
         public string Location { get; set; }
         public bool Discount { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

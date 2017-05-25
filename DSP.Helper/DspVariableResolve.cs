@@ -8,6 +8,13 @@ namespace DSP.Helper
 {
     public class DspVariableResolve : ConfigurationSection
     {
+        [ConfigurationProperty("brandName")]
+        public string BrandName
+        {
+            get { return (string)this["brandName"]; }
+
+        }
+
         [ConfigurationProperty("loginPage")]
         public LoginPage LoginPage
         {

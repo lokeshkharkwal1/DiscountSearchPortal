@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DSP.Helper;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,16 +11,23 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top @string.Concat(ApplicationVariable.Config.BrandName.ToLower(),"header")">
+        <div class="container-fluid">
             <div class="primary-logo">
                 <a href="#">
-                    <img alt="Hot Topic" src="/Images/hottopic.png" title="Discount Seach Portal">
+                    <img alt="Hot Topic" src="~/Images/Logos/@ApplicationVariable.Config.BrandName/logo.png" title="Discount Seach Portal">
                 </a>
             </div>
         </div>
     </div>
 
+    <div>
+        <div>
+            <a href="#">
+                <img class="banner-setting" alt="Hot Topic" src="~/Images/Logos/@ApplicationVariable.Config.BrandName/banner.jpg">
+            </a>
+        </div>
+    </div>
     <div class="container-fluid">
         @RenderBody()
         <hr />
