@@ -14,14 +14,14 @@ namespace DSP.Helper
             this.ErrorMessage = ConfigureFor(page).Item3;
         }
 
-        private DSPRangeAttribute(Tuple<int, int, string> minMaxMsg)
+        private DSPRangeAttribute(Tuple<Int64, Int64, string> minMaxMsg)
             : base(minMaxMsg.Item1, minMaxMsg.Item2)
         {
             this.ErrorMessage = minMaxMsg.Item3;
         }
 
 
-        public static Tuple<int, int, string> ConfigureFor(DspPage pageType)
+        public static Tuple<Int64, Int64, string> ConfigureFor(DspPage pageType)
         {
             var config = GetConfig(pageType);
             return GetMinMaxMsg(config, pageType);            
@@ -39,15 +39,13 @@ namespace DSP.Helper
             return null;
         }
 
-        private static Tuple<int, int, string> GetMinMaxMsg(dynamic config, DspPage pg)
+        private static Tuple<Int64, Int64, string> GetMinMaxMsg(dynamic config, DspPage pg)
         {
-            int min = config.Range.MinValue;
-            int max = config.Range.MaxValue;
+            Int64 min = config.Range.MinValue;
+            Int64 max = config.Range.MaxValue;
             string msg = string.Empty;
-            msg = string.Format(config.Range.ErrorMessage,
-//                                pg == DspPage.Login ? config.LoginFieldLabel.Value : config.SearchFieldLabel.Value,
-                                min,
-                                max);
+
+            msg = string.Format(config.Range.ErrorMessage, min, max);
 
             return Tuple.Create(min, max, msg);
         }
