@@ -8,10 +8,10 @@ namespace DSP.Helper
 {
     public class DspVariableResolve : ConfigurationSection
     {
-        [ConfigurationProperty("brandName")]
-        public string BrandName
+        [ConfigurationProperty("defaultBrandName")]
+        public string DefaultBrandName
         {
-            get { return (string)this["brandName"]; }
+            get { return (string)this["defaultBrandName"]; }
 
         }
 

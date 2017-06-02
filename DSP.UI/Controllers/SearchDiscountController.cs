@@ -14,6 +14,7 @@ namespace DSP.UI.Controllers
 {
 
 
+    [SetBrandName]
     public class SearchDiscountController : Controller
     {
 
@@ -22,20 +23,23 @@ namespace DSP.UI.Controllers
         {
             qMgr = new QueryManager();
         }
-        // GET: SearchDiscount
+        // GET: SearchDiscount        
         public ActionResult Index()
         {            
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Search");
             }
-            return RedirectToAction("Login");
+            return RedirectToAction ("Login");
         }
 
-
+        
         public ActionResult Login()
-        {            
-            
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Search");
+            }
             return View();
         }
 
@@ -63,21 +67,21 @@ namespace DSP.UI.Controllers
                 }
 
                 ModelState.AddModelError("EmpId", msg);                
-            }
+            }            
             return View(loginModel);            
         }
 
 
         [HttpGet]
-        [Authorize]
+        [Authorize]        
         public ActionResult Search()
-        {
+        {            
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]        
         public ActionResult Search(SearchViewModel view)
         {
             if (ModelState.IsValid)
@@ -87,7 +91,7 @@ namespace DSP.UI.Controllers
                 {
                     ModelState.AddModelError("EmpId", ApplicationVariable.Config.SearchPage.NoResultFound.Value);                
                 }
-            }
+            }            
             return View(view);
         }
     }

@@ -25,7 +25,7 @@
                             @Html.Label(string.Empty, config.SearchFieldLabel.Value, new { @class = "control-label label-setting", @for = "EmpId" })
                         </div>
                         <div class="col-xs-9 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                            @Html.TextBoxFor(model => model.EmpId, new { placeholder = @config.SearchFieldPlaceholder.Value, @class = "form-control input-setting", required = "required", autocomplete = "off", autofocus = "true", onkeypress = "validate(event)" })
+                            @Html.TextBoxFor(model => model.EmpId, new { placeholder = @config.SearchFieldPlaceholder.Value, @class = "form-control input-setting", required = "required", autocomplete = "off", autofocus = "true" })
                             @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
                         </div>
                         @if (Model != null && Model.Result != null)
@@ -109,23 +109,7 @@
 {
     <script>
         setTimeout(function () {
-            window.location = "/";
-        }, (1000 * 60 * @Session.Timeout) + 10);
-
-        function validate(evt) {
-            var theEvent = evt || window.event;
-            var key = theEvent.keyCode || theEvent.which;
-
-
-            //key = String.fromCharCode( key );
-            //console.log(key);
-            //key = decodeURIComponent(key);
-            //var regex = /^[0-9.]+$|^\%0D$/;
-            if((key < 48 || key > 57) && key != 13) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-            }
-        }
-
+            window.location = '@Url.Action("Login", "SerachDiscount")';
+        }, (1000 * 60 * parseInt(@Session.Timeout)) + 10);        
     </script>
 }
