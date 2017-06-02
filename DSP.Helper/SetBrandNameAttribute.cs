@@ -10,6 +10,7 @@ namespace DSP.Helper
 {
     public class SetBrandNameAttribute : ActionFilterAttribute, IActionFilter
     {
+        private List<string> PossibleBrandNames = new List<string>{"HT", "TD", "BL"};
         private string PropName;
         private string QueryStringParamName;
         public SetBrandNameAttribute(string viewBagPropertyName = "Brand", string queryStringParameterName = "brand")
@@ -24,14 +25,15 @@ namespace DSP.Helper
 
             #region Set brand name
             var brand = filterContext.HttpContext.Request.QueryString[QueryStringParamName];
-            if (brand != null)
+
+            if (brand != null && PossibleBrandNames.Any(c=>c == brand.ToUpper().Trim()))
             {
                 session.Add(PropName, brand);
             }
             #endregion
 
             #region Set viewbag prop
-            viewBagDic[PropName] = brand ?? session[PropName] as string ?? ApplicationVariable.Config.DefaultBrandName;
+            viewBagDic[PropName] = session[PropName] as string ?? ApplicationVariable.Config.DefaultBrandName;
             #endregion
 
 
