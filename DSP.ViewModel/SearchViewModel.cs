@@ -20,7 +20,7 @@ namespace DSP.ViewModel
             }
             set
             {
-                _searchEmpId = value.PadLeft(ApplicationVariable.Config.SearchPage.Range.MaxValue.ToString().Length, '0');
+                _searchEmpId = value.PadLeft(ApplicationVariable.GetBrandConfig().SearchPage.Range.MaxValue.ToString().Length, '0');
             }
         }
 

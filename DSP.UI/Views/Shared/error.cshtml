@@ -1,0 +1,13 @@
+﻿@using DSP.Helper;
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="panel panel-danger">
+        <div class="panel-heading">Error Occurred</div>
+        <div class="panel-body">
+            @ApplicationVariable.GetBrandConfig().CustomError.ErrorMessage.Value
+        </div>
+    </div>
+</div>

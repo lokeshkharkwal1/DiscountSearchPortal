@@ -1,6 +1,7 @@
 ﻿using DSP.Helper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,7 @@ namespace DSP.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ApplicationVariable.LoadAll();
+
         }
 
         void Session_Start(object sender, EventArgs e)
@@ -32,5 +34,59 @@ namespace DSP.UI
             }
 
         }
+
+        public void Application_Error()
+        {
+            var ex = Server.GetLastError();
+            
+            LogException(ex);
+            Response.Redirect("/SearchDiscount/Error", true);
+
+        }
+
+        private void LogException(Exception ex)
+        {
+
+
+            var logLocation =  ApplicationVariable.GetBrandConfig().CustomError.ErrorLogLocation.Value;
+
+            if (!string.IsNullOrEmpty(logLocation))
+            {
+                var rootPath = Server.MapPath(logLocation);
+
+                var fileName = string.Format("Error_{0}.txt", DateTime.Now.ToString("yyyy-MM-dd"));
+                var filePath = Path.Combine(rootPath, fileName);
+
+                if (!Directory.Exists(rootPath))
+                {
+                    Directory.CreateDirectory(rootPath);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write(ex.Message);
+                        sw.WriteLine();
+                        sw.WriteLine(ex.StackTrace);
+                        sw.WriteLine();
+                    }
+                }
+                else
+                {
+                    using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write(ex.Message);
+                        sw.WriteLine();
+                        sw.WriteLine(ex.StackTrace);
+                        sw.WriteLine();
+
+                    }
+                }
+            }
+
+          
+
+
+        }
+
     }
 }

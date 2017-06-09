@@ -32,9 +32,9 @@ namespace DSP.Helper
             switch (page)
             {
                 case DspPage.Login:
-                    return ApplicationVariable.Config.LoginPage;
+                    return ApplicationVariable.GetBrandConfig().LoginPage;
                 case DspPage.Search:
-                    return ApplicationVariable.Config.SearchPage;
+                    return ApplicationVariable.GetBrandConfig().SearchPage;
             }
             return null;
         }

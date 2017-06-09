@@ -10,17 +10,28 @@ namespace DSP.Helper
     {
         public static void LoadAll()
         {
-            Config = ConfigurationManager.GetSection("DSP") as DspVariableResolve ;
-            if(Config != null)
+            Config = ConfigurationManager.GetSection("DSP") as DspConfiguration ;                       
+        }
+
+        private static DspConfiguration Config;
+
+        public static BrandConfiguration GetBrandConfig()
+        {
+            string brandName = (HttpContext.Current.Session["Brand"] ?? Config.DefaultBrandName).ToString();
+            var brandConfig = Config.AllBrands.Cast<BrandConfiguration>().FirstOrDefault(c=>string.Equals(c.BrandName, brandName, StringComparison.InvariantCultureIgnoreCase));
+            if(brandConfig == null)
             {
-                JobCodeAllowedToLogin = Config.LoginPage.JobCodesAllowedToLogin.Value
+                brandConfig =  Config.AllBrands.Cast<BrandConfiguration>().FirstOrDefault(c=>string.Equals(c.BrandName, Config.DefaultBrandName, StringComparison.InvariantCultureIgnoreCase));
+            }
+
+            return brandConfig;
+        }
+        public static List<string> JobCodeAllowedToLogin()
+        {
+            return GetBrandConfig().LoginPage.JobCodesAllowedToLogin.Value
                                         .Split(',', ';')
                                         .Select(c => c.Trim())
                                         .ToList();
-            }
         }
-
-        public static DspVariableResolve Config { get; set; }
-        public static List<string> JobCodeAllowedToLogin { get; set; }
     }
 }

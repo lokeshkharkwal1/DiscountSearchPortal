@@ -19,7 +19,7 @@ namespace DSP.ViewModel
                 return _loginEmpId;
             }
             set{
-                _loginEmpId = value.PadLeft(ApplicationVariable.Config.LoginPage.Range.MaxValue.ToString().Length, '0');
+                _loginEmpId = value.PadLeft(ApplicationVariable.GetBrandConfig().LoginPage.Range.MaxValue.ToString().Length, '0');
             }
         }
 

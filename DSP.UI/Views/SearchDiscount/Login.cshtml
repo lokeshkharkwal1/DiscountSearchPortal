@@ -1,7 +1,7 @@
 ﻿@model DSP.ViewModel.LoginViewModel
 @{
     ViewBag.Title = "Login";
-    var config = DSP.Helper.ApplicationVariable.Config.LoginPage;
+    var config = DSP.Helper.ApplicationVariable.GetBrandConfig().LoginPage;
 }
 
 <div class="row">
@@ -20,7 +20,7 @@
                             @Html.Label(string.Empty, config.LoginFieldLabel.Value, new{@class="label-setting", @for="EmpId"})
                         </div>
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                            
-                            @Html.TextBoxFor(model => model.EmpId, new {@class="form-control input-setting", placeholder=@config.LoginFieldPlaceholder.Value, required="required", autocomplete="off", autofocus="true"})
+                            @Html.TextBoxFor(model => model.EmpId, new { @class = "form-control input-setting", placeholder = @config.LoginFieldPlaceholder.Value, required = "required", autocomplete = "off", autofocus = "true" })
                             @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
                         </div>
                     </div>

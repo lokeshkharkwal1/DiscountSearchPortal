@@ -35,7 +35,7 @@ namespace DSP.DB
                     bool isActive = dr.GetFieldValue<bool>(1);
                     string jobCode = dr.GetFieldValue<string>(2).Trim();
 
-                    if (isActive && ApplicationVariable.JobCodeAllowedToLogin.Any(c => string.Equals(c, jobCode, StringComparison.InvariantCultureIgnoreCase)))
+                    if (isActive && ApplicationVariable.JobCodeAllowedToLogin().Any(c => string.Equals(c, jobCode, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         return LoginStatus.Successful;
                     }

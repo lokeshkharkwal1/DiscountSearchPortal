@@ -1,12 +1,6 @@
 ﻿using DSP.DB;
 using DSP.Helper;
 using DSP.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -14,7 +8,7 @@ namespace DSP.UI.Controllers
 {
 
 
-    [SetBrandName]
+    [SetBrandName]    
     public class SearchDiscountController : Controller
     {
 
@@ -25,7 +19,7 @@ namespace DSP.UI.Controllers
         }
         // GET: SearchDiscount        
         public ActionResult Index()
-        {            
+        {
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Search");
@@ -55,10 +49,10 @@ namespace DSP.UI.Controllers
                 switch (rslt)
                 {
                     case LoginStatus.NotFound:
-                        msg = ApplicationVariable.Config.LoginPage.ErrorMessageIfUserNotFound.Value;
+                        msg = ApplicationVariable.GetBrandConfig().LoginPage.ErrorMessageIfUserNotFound.Value;
                         break;
                     case LoginStatus.NotAllowed:
-                        msg = ApplicationVariable.Config.LoginPage.ErrorMessageIfUserNotAllowedToLogin.Value;
+                        msg = ApplicationVariable.GetBrandConfig().LoginPage.ErrorMessageIfUserNotAllowedToLogin.Value;
                         break;
                     case LoginStatus.Successful:
                         FormsAuthentication.SetAuthCookie(loginModel.FirstName, false);
@@ -89,10 +83,16 @@ namespace DSP.UI.Controllers
                 SearchStatus rslt = qMgr.DiscountLookup(view);
                 if(rslt == SearchStatus.NotFound)
                 {
-                    ModelState.AddModelError("EmpId", ApplicationVariable.Config.SearchPage.NoResultFound.Value);                
+                    ModelState.AddModelError("EmpId", ApplicationVariable.GetBrandConfig().SearchPage.NoResultFound.Value);                
                 }
             }            
             return View(view);
         }
+
+        public ActionResult Error() 
+        {
+            return View("error");
+        }
+
     }
 }

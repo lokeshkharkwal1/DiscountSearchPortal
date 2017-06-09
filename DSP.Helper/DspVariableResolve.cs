@@ -6,12 +6,66 @@ using System.Web;
 
 namespace DSP.Helper
 {
-    public class DspVariableResolve : ConfigurationSection
+
+    public class DspConfiguration : ConfigurationSection
     {
-        [ConfigurationProperty("defaultBrandName")]
+        [ConfigurationProperty("defaultBrandName", IsRequired = true)]
         public string DefaultBrandName
         {
             get { return (string)this["defaultBrandName"]; }
+
+        }
+
+
+        [ConfigurationProperty("allBrands")]
+        public DspCollection AllBrands
+        {
+            get { return (DspCollection)this["allBrands"]; }
+            set { this["allBrands"] = value; }
+        }
+    }
+
+    [ConfigurationCollection(typeof(BrandConfiguration),AddItemName="addBrand")]
+    public class DspCollection : ConfigurationElementCollection 
+    {
+        protected override void BaseAdd(ConfigurationElement element)
+        {
+            base.BaseAdd(element);
+        }
+
+        protected override ConfigurationElement CreateNewElement()
+        {
+            return new BrandConfiguration();
+        }
+
+        protected override object GetElementKey(ConfigurationElement element)
+        {
+            return ((BrandConfiguration)element).BrandName;
+        }
+
+
+
+        new public BrandConfiguration this[string brandName]
+        {
+            get
+            {
+                return (BrandConfiguration)BaseGet(brandName);
+            }
+        }
+
+        public void Add(BrandConfiguration brandConfig)
+        {
+            BaseAdd(brandConfig);            
+        }
+    }
+
+    public class BrandConfiguration : ConfigurationElement
+    {
+
+        [ConfigurationProperty("brandName", IsKey=true, IsRequired=true)]
+        public string BrandName
+        {
+            get { return (string)this["brandName"]; }
 
         }
 
@@ -28,6 +82,19 @@ namespace DSP.Helper
             get { return (SearchPage)this["searchPage"]; }
 
         }
+
+        [ConfigurationProperty("uiLogoAndBanner")]
+        public UiLogoAndBanner UiLogoAndBanner 
+        {
+            get { return (UiLogoAndBanner)this["uiLogoAndBanner"]; }
+        }
+
+        [ConfigurationProperty("customError")]
+        public CustomError CustomError 
+        {
+            get { return (CustomError)this["customError"]; }
+        }
+
 
     }
 
@@ -52,6 +119,49 @@ namespace DSP.Helper
         {
             get { return (string)this["errorMessage"]; }
             set { this["errorMessage"] = value; }
+        }
+    }
+
+    public class UiLogoAndBanner : ConfigurationElement
+    {
+        [ConfigurationProperty("backgroundColor")]
+        public CustomeElement<string> BackgroundColor
+        {
+            get { return (CustomeElement<string>)this["backgroundColor"]; }
+            set { this["backgroundColor"] = value; }
+
+        }
+
+        [ConfigurationProperty("brandLogoPath")]
+        public CustomeElement<string> BrandLogoPath
+        {
+            get { return (CustomeElement<string>)this["brandLogoPath"]; }
+            set { this["brandLogoPath"] = value; }
+        }
+
+        [ConfigurationProperty("brandBannerPath")]
+        public CustomeElement<string> BrandBannerPath
+        {
+            get { return (CustomeElement<string>)this["brandBannerPath"]; }
+            set { this["brandBannerPath"] = value; }
+        }
+
+    }
+
+    public class CustomError : ConfigurationElement 
+    {
+        [ConfigurationProperty("errorMessage")]
+        public CustomeElement<string> ErrorMessage 
+        {
+            get { return (CustomeElement<string>)this["errorMessage"]; }
+            set { this["errorMessage"] = value; }
+        }
+
+        [ConfigurationProperty("errorLogLocation")]
+        public CustomeElement<string> ErrorLogLocation
+        {
+            get { return (CustomeElement<string>)this["errorLogLocation"]; }
+            set { this["errorLogLocation"] = value; }
         }
     }
 

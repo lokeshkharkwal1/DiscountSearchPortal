@@ -10,30 +10,10 @@ body {
     margin: 15px;
 }
 
-.htheader {
-    background-color:black !important;
-    border:1px black solid !important;
-}
-
-.blheader{
-    background-color: #FBFBFB !important;
-    border:1px #FBFBFB solid !important;
-        
-}
-
-.tdheader{
-    background-color: #FBFBFB !important;
-    border:1px #FBFBFB solid !important;
-
-}
-
 .banner-setting {
     width:100%;
     height:100px;
 }
-
-
-
 
 .ellipsis-overflow
 {
@@ -58,6 +38,13 @@ body {
     color: blue;
 }
 
+/*#endregion */
+
+/*#region Override border color for navbar bootstrap */
+.navbar-inverse
+{
+    border-color:transparent !important;
+}
 /*#endregion */
 
 
