@@ -91,7 +91,7 @@ namespace DSP.UI.Controllers
 
         public ActionResult Error() 
         {
-            return View("error");
+            return View();
         }
 
     }

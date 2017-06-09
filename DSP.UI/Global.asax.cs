@@ -38,16 +38,12 @@ namespace DSP.UI
         public void Application_Error()
         {
             var ex = Server.GetLastError();
-            
             LogException(ex);
             Response.Redirect("/SearchDiscount/Error", true);
-
         }
 
         private void LogException(Exception ex)
         {
-
-
             var logLocation =  ApplicationVariable.GetBrandConfig().CustomError.ErrorLogLocation.Value;
 
             if (!string.IsNullOrEmpty(logLocation))
@@ -59,33 +55,17 @@ namespace DSP.UI
 
                 if (!Directory.Exists(rootPath))
                 {
-                    Directory.CreateDirectory(rootPath);
-                    using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        sw.Write(ex.Message);
-                        sw.WriteLine();
-                        sw.WriteLine(ex.StackTrace);
-                        sw.WriteLine();
-                    }
+                    Directory.CreateDirectory(rootPath);                    
                 }
-                else
+                using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        sw.Write(ex.Message);
-                        sw.WriteLine();
-                        sw.WriteLine(ex.StackTrace);
-                        sw.WriteLine();
-
-                    }
+                    sw.Write(ex.Message);
+                    sw.WriteLine();
+                    sw.WriteLine(ex.StackTrace);
+                    sw.WriteLine();
                 }
-            }
-
-          
-
-
+            }          
         }
 
     }
