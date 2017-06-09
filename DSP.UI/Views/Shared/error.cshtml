@@ -1,4 +1,5 @@
 ﻿@using DSP.Helper;
+@model string
 @{
     ViewBag.Title = "Error";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +8,14 @@
     <div class="panel panel-danger">
         <div class="panel-heading">Error Occurred</div>
         <div class="panel-body">
-            @ApplicationVariable.GetBrandConfig().CustomError.ErrorMessage.Value
+            @if(string.IsNullOrEmpty(Model))
+            {
+                @ApplicationVariable.GetBrandConfig().CustomError.ErrorMessage.Value
+            }
+            else
+            {
+                @Model
+            }            
         </div>
     </div>
 </div>

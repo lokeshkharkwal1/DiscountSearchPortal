@@ -89,9 +89,9 @@ namespace DSP.UI.Controllers
             return View(view);
         }
 
-        public ActionResult Error() 
+        public ActionResult Error(string externalError) 
         {
-            return View();
+            return View(model:externalError);
         }
 
     }
