@@ -38,14 +38,14 @@ namespace DSP.UI
         public void Application_Error()
         {
             var ex = Server.GetLastError();
-            var externalError = LogException(ex);
-            var urlFormat = "/SearchDiscount/Error{0}";            
+            var externalError = LogException(ex);            
+            var urlFormat = "{0}/SearchDiscount/Error{1}";            
             var placeHolder = string.Empty;
             if (!string.IsNullOrEmpty(externalError))
             {
                 placeHolder  ="?externalError="+externalError;
             }
-            Response.Redirect(string.Format(urlFormat, placeHolder), true); 
+            Response.Redirect(string.Format(urlFormat, Request.ApplicationPath, placeHolder), true); 
         }
 
         private string LogException(Exception ex)
